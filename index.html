@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcio Games Ltd | Mobile Software Publishers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Sports-Tech Dark Theme --- */
+        :root {
+            --bg-main: #020617; /* Slate 950 */
+            --bg-surface: #0f172a; /* Slate 900 */
+            --bg-card: #1e293b; /* Slate 800 */
+            --color-primary: #10b981; /* Emerald/Pitch Green */
+            --color-primary-glow: rgba(16, 185, 129, 0.3);
+            --color-secondary: #38bdf8; /* Sky Blue */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --max-width: 1100px;
+            --transition-speed: 0.3s;
+        }
+
+        /* --- Global Resets & Typography --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .cite-ref {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+            vertical-align: super;
+            margin-left: 2px;
+            user-select: none;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 140px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* --- Header Navigation --- */
+        .navbar {
+            background-color: rgba(2, 6, 23, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .brand-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .brand-logo svg {
+            color: var(--color-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- 1. Hero Section --- */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 36px;
+            background: var(--color-primary);
+            color: #020617;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px var(--color-primary-glow);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #34d399;
+            box-shadow: 0 6px 20px rgba(52, 211, 153, 0.4);
+        }
+
+        /* --- 2. About Section --- */
+        .about-section {
+            background-color: var(--bg-surface);
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .about-card strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* --- 3. Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .service-box {
+            background: var(--bg-card);
+            padding: 50px 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.02);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.3);
+            background: #1e293b;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            color: var(--color-primary);
+            margin-bottom: 24px;
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .service-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .service-box p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- 4. Contact Section --- */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        .form-area {
+            padding: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--color-primary);
+            color: #020617;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            width: 100%;
+            transition: background var(--transition-speed) ease;
+        }
+
+        .submit-btn:hover {
+            background: #34d399;
+        }
+
+        .info-area {
+            background: rgba(16, 185, 129, 0.03);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-item {
+            margin-bottom: 32px;
+        }
+
+        .info-item h4 {
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .info-item p, .info-item a {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .info-item a:hover {
+            color: var(--color-primary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 60px 0 40px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3.5rem; }
+            .contact-layout { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 8l4 4-4 4M8 12h8"></path>
+                </svg>
+                CALCIO GAMES
+            </a>
+            <nav class="nav-menu">
+                <a href="#about">Corporate Profile</a>
+                <a href="#services">Publishing Services</a>
+                <a href="#contact">App Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Publishing the next generation<br>of mobile sports games.</h1>
+            <p>CALCIO GAMES LTD<span class="cite-ref">[cite: 17]</span> is a London-based software publisher delivering high-performance iOS applications and engaging sports-tech experiences to the global App Store.</p>
+            <a href="#contact" class="btn-primary">Initialize Partnership</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Mission.</h2>
+                <p class="section-subtitle">Bridging interactive entertainment with robust software publishing.</p>
+            </div>
+            <div class="about-card">
+                Headquartered in LONDON, England<span class="cite-ref">[cite: 17]</span>, <strong>CALCIO GAMES LTD</strong><span class="cite-ref">[cite: 17]</span> operates as a premier digital entertainment entity. Deeply embedded within the Software Publishers industry<span class="cite-ref">[cite: 17]</span>, we specialize in the development, distribution, and lifecycle management of prepackaged software services<span class="cite-ref">[cite: 17]</span>. Our core focus lies in the mobile sports gaming sector, where we leverage the iOS ecosystem to deploy globally scalable software. We handle everything from the initial technical architecture to final app distribution and post-launch server maintenance, ensuring our interactive products meet the strict quality standards of the modern software market.
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Capabilities.</h2>
+                <p class="section-subtitle">Comprehensive software publishing and system design frameworks.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Software Publishing</h3>
+                    <p>Operating explicitly as Software Publishers<span class="cite-ref">[cite: 17]</span>, we manage the complete commercial release of iOS games. We handle code compliance, App Store metadata optimization, digital rights management, and global deployment logistics for high-fidelity mobile software.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Native iOS Engineering</h3>
+                    <p>We build robust, native mobile applications optimized for the Apple ecosystem. Our internal engineering processes ensure that our sports and entertainment titles utilize advanced hardware acceleration and conform seamlessly to all platform constraints.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"></path>
+                            <line x1="2" y1="20" x2="2.01" y2="20"></line>
+                        </svg>
+                    </div>
+                    <h3>Prepackaged Software Services</h3>
+                    <p>In accordance with our standing in Prepackaged software services<span class="cite-ref">[cite: 17]</span>, we provide ready-to-deploy digital entertainment packages. We integrate secure multiplayer backend systems and real-time database architecture to support our mobile user base.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Corporate Inquiry.</h2>
+                <p class="section-subtitle">Initiate a dialogue regarding game publishing, app support, or corporate development.</p>
+            </div>
+            
+            <div class="contact-layout">
+                <!-- Contact Form -->
+                <div class="form-area">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Organization / Studio Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Contact Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Software Project / Support Details</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Transmit Request</button>
+                    </form>
+                </div>
+
+                <!-- Contacts Info -->
+                <div class="info-area">
+                    <div class="info-item">
+                        <h4>Headquarters</h4>
+                        <p>11 Stoneydown Avenue<br>LONDON, England, E17 6LQ<span class="cite-ref">[cite: 17]</span><br>United Kingdom<span class="cite-ref">[cite: 17]</span></p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Digital Comm Node</h4>
+                        <a href="mailto:admin@calciogames.site">admin@calciogames.site</a>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Industry Registry</h4>
+                        <p>Software Publishers / Information<span class="cite-ref">[cite: 17]</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CALCIO GAMES LTD. All rights reserved. Registered Software Publishers.</p>
+            <span class="footer-duns" style="display:block; margin-top: 10px; color: #64748b; font-size: 0.8rem;">Reference: image_1b2e81.png<span class="cite-ref">[cite: 17]</span></span>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
