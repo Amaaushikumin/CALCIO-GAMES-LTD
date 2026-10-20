@@ -1,568 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcio Games Ltd | Mobile Software Publishers</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- CSS Variables & Sports-Tech Dark Theme --- */
-        :root {
-            --bg-main: #020617; /* Slate 950 */
-            --bg-surface: #0f172a; /* Slate 900 */
-            --bg-card: #1e293b; /* Slate 800 */
-            --color-primary: #10b981; /* Emerald/Pitch Green */
-            --color-primary-glow: rgba(16, 185, 129, 0.3);
-            --color-secondary: #38bdf8; /* Sky Blue */
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --radius-lg: 16px;
-            --radius-sm: 8px;
-            --max-width: 1100px;
-            --transition-speed: 0.3s;
-        }
-
-        /* --- Global Resets & Typography --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-main);
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-main);
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
-        }
-
-        h1, h2, h3, h4, h5 {
-            color: var(--text-main);
-            letter-spacing: -0.02em;
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .cite-ref {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            opacity: 0.5;
-            vertical-align: super;
-            margin-left: 2px;
-            user-select: none;
-        }
-
-        /* --- Utility Classes --- */
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-padding {
-            padding: 140px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        /* --- Header Navigation --- */
-        .navbar {
-            background-color: rgba(2, 6, 23, 0.85);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .brand-logo {
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-        }
-
-        .brand-logo svg {
-            color: var(--color-primary);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-menu a {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-menu a:hover {
-            color: var(--text-main);
-        }
-
-        /* --- 1. Hero Section --- */
-        .hero {
-            padding-top: 180px;
-            padding-bottom: 120px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-            opacity: 0;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 16px 36px;
-            background: var(--color-primary);
-            color: #020617;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 30px;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 4px 15px var(--color-primary-glow);
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-            opacity: 0;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #34d399;
-            box-shadow: 0 6px 20px rgba(52, 211, 153, 0.4);
-        }
-
-        /* --- 2. About Section --- */
-        .about-section {
-            background-color: var(--bg-surface);
-        }
-
-        .about-card {
-            background: var(--bg-card);
-            padding: 60px;
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.05);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .about-card strong {
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
-        /* --- 3. Services --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .service-box {
-            background: var(--bg-card);
-            padding: 50px 40px;
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.02);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .service-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.3);
-            background: #1e293b;
-        }
-
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            color: var(--color-primary);
-            margin-bottom: 24px;
-        }
-
-        .service-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .service-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-        }
-
-        .service-box p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* --- 4. Contact Section --- */
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
-        }
-
-        .form-area {
-            padding: 60px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px;
-            background: var(--bg-surface);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: var(--radius-sm);
-            color: var(--text-main);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color var(--transition-speed) ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: var(--color-primary);
-            color: #020617;
-            border: none;
-            padding: 16px 32px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            width: 100%;
-            transition: background var(--transition-speed) ease;
-        }
-
-        .submit-btn:hover {
-            background: #34d399;
-        }
-
-        .info-area {
-            background: rgba(16, 185, 129, 0.03);
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .info-item {
-            margin-bottom: 32px;
-        }
-
-        .info-item h4 {
-            color: var(--color-primary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 8px;
-        }
-
-        .info-item p, .info-item a {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
-        .info-item a:hover {
-            color: var(--color-primary);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--bg-main);
-            color: var(--text-muted);
-            text-align: center;
-            padding: 60px 0 40px;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 3.5rem; }
-            .contact-layout { grid-template-columns: 1fr; }
-            .nav-menu { display: none; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calcio Games Ltd — Football games for phones and PC</title>
+<meta name="description" content="Calcio Games is an independent software publisher in London making football games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f4f1ea;--ink:#17201b;--mute:#5d665f;--line:#d9d4c7;--pitch:#1f4a33;--chalk:#e8e3d3;--accent:#c8501e;--on-pitch:#f4f1ea;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121712;--ink:#ece8dc;--mute:#9aa39b;--line:#2b342d;--pitch:#0c2418;--chalk:#26302a;--accent:#e2733f;--on-pitch:#ece8dc}}
+:root[data-theme="dark"]{--bg:#121712;--ink:#ece8dc;--mute:#9aa39b;--line:#2b342d;--pitch:#0c2418;--chalk:#26302a;--accent:#e2733f;--on-pitch:#ece8dc}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font:600 21px var(--serif);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:26px;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+.hero{padding:84px 0 72px;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+.eyebrow{font:500 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 20px}
+h1{font:600 clamp(38px,6vw,64px)/1.04 var(--serif);letter-spacing:-.025em;margin:0 0 24px}
+h1 em{font-style:italic;color:var(--accent)}
+.lead{font-size:19px;color:var(--mute);max-width:34em;margin:0 0 32px}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:13px 22px;border-radius:3px;text-decoration:none;font-weight:500;font-size:15px}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--ink);margin-left:8px}
+.pitch{background:var(--pitch);border-radius:4px;padding:18px;aspect-ratio:3/4;max-height:440px;width:100%}
+.pitch svg{width:100%;height:100%;display:block}
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font:600 clamp(28px,4vw,38px)/1.15 var(--serif);letter-spacing:-.02em;margin:0 0 12px}
+.sub{color:var(--mute);max-width:36em;margin:0 0 40px}
+.row{display:grid;grid-template-columns:70px 1fr 150px;gap:24px;padding:26px 0;border-top:1px solid var(--line);align-items:baseline}
+.row:last-child{border-bottom:1px solid var(--line)}
+.num{font:500 14px var(--serif);color:var(--mute)}
+.row h3{font:600 22px var(--serif);margin:0 0 4px;letter-spacing:-.01em}
+.row p{margin:0;color:var(--mute);font-size:16px}
+.tag{font-size:13px;font-weight:500;color:var(--accent);text-align:right}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.two p{margin:0 0 16px}
+.facts{background:var(--chalk);padding:28px;border-radius:4px;font-size:15px}
+.facts dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:16px}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:2px 0 0}
+.contact a.mail{font:600 clamp(24px,4.5vw,40px) var(--serif);letter-spacing:-.02em;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;word-break:break-all}
+.contact address{font-style:normal;color:var(--mute);margin-top:28px}
+.legal h3{font:600 18px var(--serif);margin:28px 0 6px}
+.legal p{color:var(--mute);font-size:15.5px;max-width:44em;margin:0}
+footer{background:var(--pitch);color:var(--on-pitch);padding:36px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;opacity:.9}
+footer a{text-decoration:none;border-bottom:1px solid currentColor}
+@media (max-width:780px){
+  .hero{grid-template-columns:1fr;padding:48px 0;gap:36px}
+  .pitch{aspect-ratio:16/10;max-height:none}
+  .two{grid-template-columns:1fr;gap:32px}
+  .row{grid-template-columns:1fr;gap:6px}.tag{text-align:left}
+  nav{gap:16px;font-size:14px}
+  .btn.ghost{margin:10px 0 0}
+}
+</style>
 </head>
 <body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Calcio<span>.</span>Games</a>
+    <nav>
+      <a href="#games">Games</a><a href="#studio">Studio</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="container nav-wrapper">
-            <a href="#" class="brand-logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 8l4 4-4 4M8 12h8"></path>
-                </svg>
-                CALCIO GAMES
-            </a>
-            <nav class="nav-menu">
-                <a href="#about">Corporate Profile</a>
-                <a href="#services">Publishing Services</a>
-                <a href="#contact">App Support</a>
-            </nav>
-        </div>
-    </header>
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Independent software publisher · London</p>
+      <h1>Football games, made by people who <em>watch</em> the match.</h1>
+      <p class="lead">We are a small studio building football games for phones and PC. Short on gimmicks, long on feel: how a pass lands, how a crowd sounds, how a late winner should hurt.</p>
+      <a class="btn" href="#games">See what we’re making</a><a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="pitch" aria-hidden="true">
+      <svg viewBox="0 0 300 400" fill="none" stroke="#e8e3d3" stroke-width="2" stroke-opacity=".75">
+        <rect x="10" y="10" width="280" height="380"/>
+        <line x1="10" y1="200" x2="290" y2="200"/>
+        <circle cx="150" cy="200" r="42"/><circle cx="150" cy="200" r="2.5" fill="#e8e3d3"/>
+        <rect x="70" y="10" width="160" height="62"/><rect x="108" y="10" width="84" height="24"/>
+        <rect x="70" y="328" width="160" height="62"/><rect x="108" y="366" width="84" height="24"/>
+        <path d="M112 72a42 42 0 0 0 76 0M112 328a42 42 0 0 1 76 0"/>
+        <path d="M70 330 C110 270, 170 250, 214 150" stroke="#e2733f" stroke-width="2.5" stroke-dasharray="6 7" stroke-opacity="1"/>
+        <circle cx="214" cy="150" r="5" fill="#e2733f" stroke="none"/>
+      </svg>
+    </div>
+  </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Publishing the next generation<br>of mobile sports games.</h1>
-            <p>CALCIO GAMES LTD<span class="cite-ref">[cite: 17]</span> is a London-based software publisher delivering high-performance iOS applications and engaging sports-tech experiences to the global App Store.</p>
-            <a href="#contact" class="btn-primary">Initialize Partnership</a>
-        </div>
-    </section>
+  <section id="games">
+    <div class="wrap">
+      <h2>Games</h2>
+      <p class="sub">What’s on the pitch right now. We ship slowly and test a lot.</p>
+      <div class="row"><div class="num">01</div><div><h3>Pocket Penalties</h3><p>Fast, one-thumb penalty shootouts with a proper keeper AI and online head-to-head.</p></div><div class="tag">In development</div></div>
+      <div class="row"><div class="num">02</div><div><h3>Matchday Manager</h3><p>A lean football management game: squad, tactics and the Saturday that goes wrong.</p></div><div class="tag">Prototype</div></div>
+      <div class="row"><div class="num">03</div><div><h3>Sticker Book</h3><p>A collecting game for supporters, built around swaps with friends rather than paywalls.</p></div><div class="tag">Concept</div></div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section class="section-padding about-section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Mission.</h2>
-                <p class="section-subtitle">Bridging interactive entertainment with robust software publishing.</p>
-            </div>
-            <div class="about-card">
-                Headquartered in LONDON, England<span class="cite-ref">[cite: 17]</span>, <strong>CALCIO GAMES LTD</strong><span class="cite-ref">[cite: 17]</span> operates as a premier digital entertainment entity. Deeply embedded within the Software Publishers industry<span class="cite-ref">[cite: 17]</span>, we specialize in the development, distribution, and lifecycle management of prepackaged software services<span class="cite-ref">[cite: 17]</span>. Our core focus lies in the mobile sports gaming sector, where we leverage the iOS ecosystem to deploy globally scalable software. We handle everything from the initial technical architecture to final app distribution and post-launch server maintenance, ensuring our interactive products meet the strict quality standards of the modern software market.
-            </div>
-        </div>
-    </section>
+  <section id="studio">
+    <div class="wrap two">
+      <div>
+        <h2>The studio</h2>
+        <p>Calcio Games Ltd is a private, independent company based in London. “Calcio” is simply the Italian word for football, and it’s a fair summary of the brief.</p>
+        <p>We publish software for mobile and desktop, design our own games, and work with freelance artists and sound designers where it makes the game better. No investors to impress, which means we can take the time to get the small things right.</p>
+        <p>We design for short sessions, respect players’ time, and keep monetisation clear and fair.</p>
+      </div>
+      <dl class="facts">
+        <dt>Company</dt><dd>Calcio Games Ltd</dd>
+        <dt>Industry</dt><dd>Software publishing</dd>
+        <dt>Location</dt><dd>London, United Kingdom</dd>
+        <dt>Platforms</dt><dd>iOS, Android, PC</dd>
+        <dt>Contact</dt><dd>admin@calciogames.site</dd>
+      </dl>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section class="section-padding" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Capabilities.</h2>
-                <p class="section-subtitle">Comprehensive software publishing and system design frameworks.</p>
-            </div>
-            
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                    </div>
-                    <h3>Software Publishing</h3>
-                    <p>Operating explicitly as Software Publishers<span class="cite-ref">[cite: 17]</span>, we manage the complete commercial release of iOS games. We handle code compliance, App Store metadata optimization, digital rights management, and global deployment logistics for high-fidelity mobile software.</p>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                    </div>
-                    <h3>Native iOS Engineering</h3>
-                    <p>We build robust, native mobile applications optimized for the Apple ecosystem. Our internal engineering processes ensure that our sports and entertainment titles utilize advanced hardware acceleration and conform seamlessly to all platform constraints.</p>
-                </div>
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="sub">Press, partnerships, player support, or just a football argument. We read everything.</p>
+      <a class="mail" href="mailto:admin@calciogames.site">admin@calciogames.site</a>
+      <address>Calcio Games Ltd<br>11 Stoneydown Avenue<br>London, E17 6LQ<br>United Kingdom</address>
+    </div>
+  </section>
 
-                <!-- Service 3 -->
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"></path>
-                            <line x1="2" y1="20" x2="2.01" y2="20"></line>
-                        </svg>
-                    </div>
-                    <h3>Prepackaged Software Services</h3>
-                    <p>In accordance with our standing in Prepackaged software services<span class="cite-ref">[cite: 17]</span>, we provide ready-to-deploy digital entertainment packages. We integrate secure multiplayer backend systems and real-time database architecture to support our mobile user base.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="privacy" class="legal">
+    <div class="wrap">
+      <h2>Privacy</h2>
+      <p class="sub">The short version. This website uses no advertising trackers.</p>
+      <h3>What we collect</h3>
+      <p>If you email us, we keep your message and address so we can reply. This site itself sets no marketing cookies and does not sell personal data.</p>
+      <h3>How we use it</h3>
+      <p>Only to answer your enquiry and to run our business. We don’t share it with third parties except service providers who help us operate, such as email hosting.</p>
+      <h3>Your rights</h3>
+      <p>Under UK data protection law you can ask to see, correct or delete your data. Write to admin@calciogames.site and we will respond promptly. Individual games will carry their own privacy notice.</p>
+    </div>
+  </section>
+</main>
 
-    <!-- Contact Section -->
-    <section class="section-padding" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Corporate Inquiry.</h2>
-                <p class="section-subtitle">Initiate a dialogue regarding game publishing, app support, or corporate development.</p>
-            </div>
-            
-            <div class="contact-layout">
-                <!-- Contact Form -->
-                <div class="form-area">
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Organization / Studio Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Contact Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Software Project / Support Details</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Transmit Request</button>
-                    </form>
-                </div>
-
-                <!-- Contacts Info -->
-                <div class="info-area">
-                    <div class="info-item">
-                        <h4>Headquarters</h4>
-                        <p>11 Stoneydown Avenue<br>LONDON, England, E17 6LQ<span class="cite-ref">[cite: 17]</span><br>United Kingdom<span class="cite-ref">[cite: 17]</span></p>
-                    </div>
-
-                    <div class="info-item">
-                        <h4>Digital Comm Node</h4>
-                        <a href="mailto:admin@calciogames.site">admin@calciogames.site</a>
-                    </div>
-
-                    <div class="info-item">
-                        <h4>Industry Registry</h4>
-                        <p>Software Publishers / Information<span class="cite-ref">[cite: 17]</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 CALCIO GAMES LTD. All rights reserved. Registered Software Publishers.</p>
-            <span class="footer-duns" style="display:block; margin-top: 10px; color: #64748b; font-size: 0.8rem;">Reference: image_1b2e81.png<span class="cite-ref">[cite: 17]</span></span>
-        </div>
-    </footer>
-
-    <!-- Smooth Scroll Script -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Calcio Games Ltd. Registered in England and Wales.</span>
+    <span><a href="mailto:admin@calciogames.site">admin@calciogames.site</a></span>
+  </div>
+</footer>
 </body>
 </html>
