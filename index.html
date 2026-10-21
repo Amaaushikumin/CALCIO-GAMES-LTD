@@ -1,162 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Calcio Games Ltd — Football games for phones and PC</title>
-<meta name="description" content="Calcio Games is an independent software publisher in London making football games.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#f4f1ea;--ink:#17201b;--mute:#5d665f;--line:#d9d4c7;--pitch:#1f4a33;--chalk:#e8e3d3;--accent:#c8501e;--on-pitch:#f4f1ea;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121712;--ink:#ece8dc;--mute:#9aa39b;--line:#2b342d;--pitch:#0c2418;--chalk:#26302a;--accent:#e2733f;--on-pitch:#ece8dc}}
-:root[data-theme="dark"]{--bg:#121712;--ink:#ece8dc;--mute:#9aa39b;--line:#2b342d;--pitch:#0c2418;--chalk:#26302a;--accent:#e2733f;--on-pitch:#ece8dc}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header{border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.logo{font:600 21px var(--serif);text-decoration:none;letter-spacing:-.01em}
-.logo span{color:var(--accent)}
-nav{display:flex;gap:26px;font-size:15px}
-nav a{text-decoration:none;color:var(--mute)}
-nav a:hover{color:var(--ink)}
-.hero{padding:84px 0 72px;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
-.eyebrow{font:500 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 20px}
-h1{font:600 clamp(38px,6vw,64px)/1.04 var(--serif);letter-spacing:-.025em;margin:0 0 24px}
-h1 em{font-style:italic;color:var(--accent)}
-.lead{font-size:19px;color:var(--mute);max-width:34em;margin:0 0 32px}
-.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:13px 22px;border-radius:3px;text-decoration:none;font-weight:500;font-size:15px}
-.btn.ghost{background:none;color:var(--ink);border:1px solid var(--ink);margin-left:8px}
-.pitch{background:var(--pitch);border-radius:4px;padding:18px;aspect-ratio:3/4;max-height:440px;width:100%}
-.pitch svg{width:100%;height:100%;display:block}
-section{padding:72px 0;border-top:1px solid var(--line)}
-h2{font:600 clamp(28px,4vw,38px)/1.15 var(--serif);letter-spacing:-.02em;margin:0 0 12px}
-.sub{color:var(--mute);max-width:36em;margin:0 0 40px}
-.row{display:grid;grid-template-columns:70px 1fr 150px;gap:24px;padding:26px 0;border-top:1px solid var(--line);align-items:baseline}
-.row:last-child{border-bottom:1px solid var(--line)}
-.num{font:500 14px var(--serif);color:var(--mute)}
-.row h3{font:600 22px var(--serif);margin:0 0 4px;letter-spacing:-.01em}
-.row p{margin:0;color:var(--mute);font-size:16px}
-.tag{font-size:13px;font-weight:500;color:var(--accent);text-align:right}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.two p{margin:0 0 16px}
-.facts{background:var(--chalk);padding:28px;border-radius:4px;font-size:15px}
-.facts dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:16px}
-.facts dt:first-child{margin-top:0}
-.facts dd{margin:2px 0 0}
-.contact a.mail{font:600 clamp(24px,4.5vw,40px) var(--serif);letter-spacing:-.02em;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;word-break:break-all}
-.contact address{font-style:normal;color:var(--mute);margin-top:28px}
-.legal h3{font:600 18px var(--serif);margin:28px 0 6px}
-.legal p{color:var(--mute);font-size:15.5px;max-width:44em;margin:0}
-footer{background:var(--pitch);color:var(--on-pitch);padding:36px 0;font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;opacity:.9}
-footer a{text-decoration:none;border-bottom:1px solid currentColor}
-@media (max-width:780px){
-  .hero{grid-template-columns:1fr;padding:48px 0;gap:36px}
-  .pitch{aspect-ratio:16/10;max-height:none}
-  .two{grid-template-columns:1fr;gap:32px}
-  .row{grid-template-columns:1fr;gap:6px}.tag{text-align:left}
-  nav{gap:16px;font-size:14px}
-  .btn.ghost{margin:10px 0 0}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCIO GAMES LTD - Corporate</title>
+    
+    <!-- Crisp Typography: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            text: '#1d1d1f',
+                            subtext: '#86868b',
+                            bg: '#fbfbfd',
+                            blue: '#0066cc',
+                            border: '#d2d2d7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Apple-like styling */
+        body {
+            background-color: #ffffff;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Subtle Fade-in Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Modal Transitions */
+        .modal-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            transform: scale(0.95) translateY(20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        
+        /* Custom scrollbar for modals */
+        .modal-scroll::-webkit-scrollbar { width: 6px; }
+        .modal-scroll::-webkit-scrollbar-track { background: transparent; }
+        .modal-scroll::-webkit-scrollbar-thumb { background-color: #d2d2d7; border-radius: 10px; }
+    </style>
 </head>
-<body>
-<header>
-  <div class="wrap">
-    <a class="logo" href="#top">Calcio<span>.</span>Games</a>
-    <nav>
-      <a href="#games">Games</a><a href="#studio">Studio</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a>
+<body class="selection:bg-apple-blue selection:text-white">
+
+    <!-- Minimal Navigation -->
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-semibold text-lg tracking-tight text-apple-text">CALCIO GAMES</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#projects" class="text-sm font-medium text-gray-500 hover:text-apple-text transition-colors">Projects</a>
+                    <a href="#registry" class="text-sm font-medium text-gray-500 hover:text-apple-text transition-colors">Corporate</a>
+                    <a href="#support" class="text-sm font-medium text-apple-blue hover:underline transition-all">Support</a>
+                </div>
+            </div>
+        </div>
     </nav>
-  </div>
-</header>
 
-<main id="top">
-  <div class="wrap hero">
-    <div>
-      <p class="eyebrow">Independent software publisher · London</p>
-      <h1>Football games, made by people who <em>watch</em> the match.</h1>
-      <p class="lead">We are a small studio building football games for phones and PC. Short on gimmicks, long on feel: how a pass lands, how a crowd sounds, how a late winner should hurt.</p>
-      <a class="btn" href="#games">See what we’re making</a><a class="btn ghost" href="#contact">Get in touch</a>
-    </div>
-    <div class="pitch" aria-hidden="true">
-      <svg viewBox="0 0 300 400" fill="none" stroke="#e8e3d3" stroke-width="2" stroke-opacity=".75">
-        <rect x="10" y="10" width="280" height="380"/>
-        <line x1="10" y1="200" x2="290" y2="200"/>
-        <circle cx="150" cy="200" r="42"/><circle cx="150" cy="200" r="2.5" fill="#e8e3d3"/>
-        <rect x="70" y="10" width="160" height="62"/><rect x="108" y="10" width="84" height="24"/>
-        <rect x="70" y="328" width="160" height="62"/><rect x="108" y="366" width="84" height="24"/>
-        <path d="M112 72a42 42 0 0 0 76 0M112 328a42 42 0 0 1 76 0"/>
-        <path d="M70 330 C110 270, 170 250, 214 150" stroke="#e2733f" stroke-width="2.5" stroke-dasharray="6 7" stroke-opacity="1"/>
-        <circle cx="214" cy="150" r="5" fill="#e2733f" stroke="none"/>
-      </svg>
-    </div>
-  </div>
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-24 md:pt-52 md:pb-32 px-6 flex flex-col items-center justify-center text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="reveal font-semibold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6 text-apple-text">
+                CALCIO GAMES LTD
+            </h1>
+            <p class="reveal delay-100 mt-4 text-xl md:text-2xl text-apple-subtext font-light max-w-2xl mx-auto leading-relaxed">
+                Pioneering the next generation of interactive software and entertainment.
+            </p>
+        </div>
+    </section>
 
-  <section id="games">
-    <div class="wrap">
-      <h2>Games</h2>
-      <p class="sub">What’s on the pitch right now. We ship slowly and test a lot.</p>
-      <div class="row"><div class="num">01</div><div><h3>Pocket Penalties</h3><p>Fast, one-thumb penalty shootouts with a proper keeper AI and online head-to-head.</p></div><div class="tag">In development</div></div>
-      <div class="row"><div class="num">02</div><div><h3>Matchday Manager</h3><p>A lean football management game: squad, tactics and the Saturday that goes wrong.</p></div><div class="tag">Prototype</div></div>
-      <div class="row"><div class="num">03</div><div><h3>Sticker Book</h3><p>A collecting game for supporters, built around swaps with friends rather than paywalls.</p></div><div class="tag">Concept</div></div>
-    </div>
-  </section>
+    <!-- Projects in Development Section -->
+    <section id="projects" class="py-24 bg-apple-bg px-6 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-semibold text-3xl md:text-4xl tracking-tight mb-4">Projects in Development</h2>
+                <p class="text-lg text-apple-subtext max-w-2xl mx-auto">Discover the next-generation interactive experiences currently engineered by our development studio.</p>
+            </div>
 
-  <section id="studio">
-    <div class="wrap two">
-      <div>
-        <h2>The studio</h2>
-        <p>Calcio Games Ltd is a private, independent company based in London. “Calcio” is simply the Italian word for football, and it’s a fair summary of the brief.</p>
-        <p>We publish software for mobile and desktop, design our own games, and work with freelance artists and sound designers where it makes the game better. No investors to impress, which means we can take the time to get the small things right.</p>
-        <p>We design for short sessions, respect players’ time, and keep monetisation clear and fair.</p>
-      </div>
-      <dl class="facts">
-        <dt>Company</dt><dd>Calcio Games Ltd</dd>
-        <dt>Industry</dt><dd>Software publishing</dd>
-        <dt>Location</dt><dd>London, United Kingdom</dd>
-        <dt>Platforms</dt><dd>iOS, Android, PC</dd>
-        <dt>Contact</dt><dd>admin@calciogames.site</dd>
-      </dl>
-    </div>
-  </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Project 1 -->
+                <div class="reveal delay-100 bg-white p-10 rounded-3xl border border-gray-200 shadow-sm flex flex-col transition-shadow hover:shadow-md">
+                    <div class="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-apple-text mb-2">Project Nova</h3>
+                    <p class="text-gray-500 mb-6 flex-grow leading-relaxed">An immersive, narrative-driven exploration framework built on a custom procedural generation engine.</p>
+                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
+                        <span class="font-medium text-gray-400 uppercase tracking-wider">Status: Alpha</span>
+                        <span class="text-apple-subtext">Target: Q3 2027</span>
+                    </div>
+                </div>
 
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <p class="sub">Press, partnerships, player support, or just a football argument. We read everything.</p>
-      <a class="mail" href="mailto:admin@calciogames.site">admin@calciogames.site</a>
-      <address>Calcio Games Ltd<br>11 Stoneydown Avenue<br>London, E17 6LQ<br>United Kingdom</address>
-    </div>
-  </section>
+                <!-- Project 2 -->
+                <div class="reveal delay-200 bg-white p-10 rounded-3xl border border-gray-200 shadow-sm flex flex-col transition-shadow hover:shadow-md">
+                    <div class="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-apple-text mb-2">Velocity Engine</h3>
+                    <p class="text-gray-500 mb-6 flex-grow leading-relaxed">A competitive multiplayer module focusing on high-tickrate server synchronization and anti-latency protocols.</p>
+                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
+                        <span class="font-medium text-gray-400 uppercase tracking-wider">Status: Pre-Prod</span>
+                        <span class="text-apple-subtext">Target: Q1 2028</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="privacy" class="legal">
-    <div class="wrap">
-      <h2>Privacy</h2>
-      <p class="sub">The short version. This website uses no advertising trackers.</p>
-      <h3>What we collect</h3>
-      <p>If you email us, we keep your message and address so we can reply. This site itself sets no marketing cookies and does not sell personal data.</p>
-      <h3>How we use it</h3>
-      <p>Only to answer your enquiry and to run our business. We don’t share it with third parties except service providers who help us operate, such as email hosting.</p>
-      <h3>Your rights</h3>
-      <p>Under UK data protection law you can ask to see, correct or delete your data. Write to admin@calciogames.site and we will respond promptly. Individual games will carry their own privacy notice.</p>
-    </div>
-  </section>
-</main>
+    <!-- Corporate Registry Section -->
+    <section id="registry" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-semibold text-3xl md:text-4xl tracking-tight mb-4">Corporate Registry</h2>
+                <p class="text-lg text-apple-subtext max-w-2xl mx-auto">Official business documentation and core organizational intelligence.</p>
+            </div>
 
-<footer>
-  <div class="wrap">
-    <span>© 2026 Calcio Games Ltd. Registered in England and Wales.</span>
-    <span><a href="mailto:admin@calciogames.site">admin@calciogames.site</a></span>
-  </div>
-</footer>
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-sm p-8 md:p-12 max-w-4xl mx-auto reveal delay-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-12">
+                    
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Legal Entity</h3>
+                        <p class="text-xl font-medium text-apple-text">CALCIO GAMES LTD</p>
+                        <p class="text-sm text-gray-500 mt-1">Private Independent Company</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Key Principal</h3>
+                        <p class="text-xl font-medium text-apple-text">Timothy Mark Webber</p>
+                        <p class="text-sm text-gray-500 mt-1">Director & Authorized Representative</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Registered Address</h3>
+                        <address class="not-italic text-base text-apple-text leading-relaxed">
+                            11 Stoneydown Avenue<br>
+                            LONDON, England<br>
+                            E17 6LQ<br>
+                            United Kingdom
+                        </address>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Contact Operations</h3>
+                        <div class="space-y-3">
+                            <a href="mailto:info@calciogames.site" class="flex items-center text-base font-medium text-apple-blue hover:underline break-all">
+                                <svg class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                info@calciogames.site
+                            </a>
+                            <div class="flex items-center text-base text-gray-600">
+                                <svg class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                                D-U-N-S® Number: *********
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div>
+                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Industry Classification</h3>
+                            <p class="text-base text-apple-text">Software Publishers</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 flex items-center bg-gray-50 px-4 py-2 rounded-full border border-gray-200">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
+                            <span class="text-sm font-medium text-gray-700">D-U-N-S® Verified Entity</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support & Contact Form -->
+    <section id="support" class="py-24 bg-apple-bg px-6 border-t border-gray-100">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-semibold text-3xl md:text-4xl tracking-tight mb-4">Support & Inquiries</h2>
+                <p class="text-lg text-apple-subtext max-w-2xl mx-auto">For technical support, business proposals, or general inquiries, please utilize the secure channel below.</p>
+            </div>
+            
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-sm p-8 md:p-12 reveal delay-100">
+                <form id="contactForm" class="space-y-6" onsubmit="event.preventDefault(); this.style.display='none'; document.getElementById('formSuccess').classList.remove('hidden');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent transition-all" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent transition-all" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <select id="subject" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent transition-all text-gray-700">
+                            <option>Technical Support</option>
+                            <option>Business Partnership</option>
+                            <option>Media Inquiry</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent transition-all resize-none" placeholder="Provide detailed information regarding your request..." required></textarea>
+                    </div>
+                    <div class="pt-2 text-right">
+                        <button type="submit" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-sm font-semibold rounded-full text-white bg-apple-text hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors shadow-sm">
+                            Submit Request
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Message -->
+                <div id="formSuccess" class="hidden text-center py-10">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 mb-6">
+                        <svg class="w-8 h-8 text-apple-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-apple-text mb-2">Request Submitted</h3>
+                    <p class="text-apple-subtext">Our support team has received your inquiry and will respond to the provided email address within 24-48 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Footer -->
+    <footer class="py-12 border-t border-gray-200 bg-white">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-xs text-gray-400 font-medium tracking-wide mb-4 md:mb-0">
+                &copy; 2026 CALCIO GAMES LTD. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+                <button onclick="openModal('privacyModal')" class="text-xs font-medium text-gray-500 hover:text-apple-text transition-colors">Privacy Policy</button>
+                <button onclick="openModal('termsModal')" class="text-xs font-medium text-gray-500 hover:text-apple-text transition-colors">Terms of Service</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals (Hidden DOM elements for Legal Texts) -->
+    
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                <h2 class="text-xl font-semibold text-apple-text">Privacy Policy</h2>
+                <button onclick="closeModal('privacyModal')" class="text-gray-400 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto modal-scroll text-sm text-gray-600 space-y-6">
+                <p><strong>Effective Date: January 1, 2026</strong></p>
+                <p>CALCIO GAMES LTD ("Company", "we", "our", "us") respects your privacy and is committed to protecting it through our compliance with this policy. This Privacy Policy describes the types of information we may collect from you or that you may provide when you visit our website and our practices for collecting, using, maintaining, protecting, and disclosing that information.</p>
+                <h3 class="text-lg font-semibold text-apple-text mt-4">1. Information We Collect</h3>
+                <p>We may collect several types of information from and about users of our Website, including information by which you may be personally identified, such as name, postal address, e-mail address, telephone number, or any other identifier by which you may be contacted online or offline ("personal information").</p>
+                <h3 class="text-lg font-semibold text-apple-text mt-4">2. Data Processing and GDPR Compliance</h3>
+                <p>As a company registered in the United Kingdom, we adhere strictly to the General Data Protection Regulation (GDPR) and the Data Protection Act. We only process personal data where we have a lawful basis to do so. You have the right to request access, correction, or deletion of your personal data held by CALCIO GAMES LTD at any time.</p>
+                <h3 class="text-lg font-semibold text-apple-text mt-4">3. Use of Information</h3>
+                <p>We use information that we collect about you or that you provide to us, including any personal information, to present our Website and its contents to you; to provide you with information, products, or services that you request from us; and to fulfill any other purpose for which you provide it.</p>
+                <p>Contact us at info@calciogames.site for any privacy-related inquiries.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                <h2 class="text-xl font-semibold text-apple-text">Terms of Service</h2>
+                <button onclick="closeModal('termsModal')" class="text-gray-400 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto modal-scroll text-sm text-gray-600 space-y-6">
+                <p><strong>Last Updated: January 1, 2026</strong></p>
+                <p>These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and CALCIO GAMES LTD ("we", "us", or "our"), concerning your access to and use of the website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto.</p>
+                <h3 class="text-lg font-semibold text-apple-text mt-4">1. Intellectual Property Rights</h3>
+                <p>Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.</p>
+                <h3 class="text-lg font-semibold text-apple-text mt-4">2. User Representations</h3>
+                <p>By using the Site, you represent and warrant that: (1) you have the legal capacity and you agree to comply with these Terms of Service; (2) you are not a minor in the jurisdiction in which you reside; (3) you will not access the Site through automated or non-human means, whether through a bot, script or otherwise.</p>
+                <h3 class="text-lg font-semibold text-apple-text mt-4">3. Governing Law</h3>
+                <p>These Terms shall be governed by and defined following the laws of the United Kingdom. CALCIO GAMES LTD and yourself irrevocably consent that the courts of the United Kingdom shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Intersection Observer for Scroll Animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            const elementsToReveal = document.querySelectorAll('.reveal');
+            elementsToReveal.forEach(el => observer.observe(el));
+        });
+
+        // Modal Logic
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
 </body>
 </html>
